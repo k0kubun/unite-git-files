@@ -6,7 +6,7 @@ let s:source = {
 function! s:source.gather_candidates(args, context)
     let kind = unite_git_util#get_kind()
     let result = unite#util#system('git ls-files')
-    if unite#util#get_last_status() == 0
+    if unite#util#get_last_status() == 0 && strlen(result) > 0
         return has('lua') ?
               \ unite#sources#git_files#gather_lua(kind, result) :
               \ unite#sources#git_files#gather_vim(kind, result)
