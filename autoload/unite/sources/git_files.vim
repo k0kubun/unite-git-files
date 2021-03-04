@@ -5,10 +5,10 @@ function! s:source.gather_candidates(args, context)
   if unite#util#get_last_status() != 0 || strlen(result) == 0
     let result = unite#util#system('find . -type f')
   endif
-  return unite#sources#git_files#gather_vim(result)
+  return unite#sources#git_files#gather(result)
 endfunction
 
-function! unite#sources#git_files#gather_vim(result)
+function! unite#sources#git_files#gather(result)
   let candidates = []
   let paths = split(a:result, '\r\n\|\r\|\n')
   for path in paths
