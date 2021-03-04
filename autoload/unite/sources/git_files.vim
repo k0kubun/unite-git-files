@@ -1,4 +1,4 @@
-let s:source = { 'name' : 'git_files', 'hooks' : {} }
+let s:source = { 'name': 'git_files', 'hooks': {} }
 
 function! s:source.gather_candidates(args, context)
   let result = unite#util#system('git ls-files')
@@ -12,7 +12,7 @@ function! unite#sources#git_files#gather_vim(result)
   let candidates = []
   let paths = split(a:result, '\r\n\|\r\|\n')
   for path in paths
-    let dict = { 'word' : path, 'kind' : 'file', 'action__path' : path }
+    let dict = { 'word': path, 'kind': 'file', 'action__path': path }
     call add(candidates, dict)
   endfor
   return candidates
